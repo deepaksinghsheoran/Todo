@@ -1,3 +1,10 @@
+.ds-box {
+            float: right;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
 .todo-container {
     width: 40%;
     margin: 0 auto;
