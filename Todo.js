@@ -1,4 +1,4 @@
-const taskInput = document.getElementById('taskInput');
+const taskInput = document.getElementById('taskInput'); // For taking tasks
 const addTaskButton = document.getElementById('addTask');
 const taskList = document.getElementById('taskList');
 const taskCount = document.getElementById('taskCount');
@@ -10,13 +10,13 @@ const uncompletedFilter = document.getElementById('uncompletedFilter');
 // Initialize task counter
 let counter = 0;
 
-
+// Function to add a new task
 function addTask() {
     const taskText = taskInput.value.trim();
 
     if (taskText !== '') {
 
-        const listItem = document.createElement('li');
+        const listItem = document.createElement('li'); // Create task elements
         listItem.classList.add('task-container', 'fade-in');
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -25,26 +25,26 @@ function addTask() {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
 
-
+// Attach event listeners
         checkbox.addEventListener('change', toggleTask);
         deleteButton.addEventListener('click', deleteTask);
 
-
+// Add elements to the task list
         listItem.appendChild(checkbox);
         listItem.appendChild(taskTextElement);
         listItem.appendChild(deleteButton);
 
         taskList.appendChild(listItem);
 
-
+// Clear the input field
         taskInput.value = '';
 
-
+// Update the task counter
         counter++;
         taskCount.textContent = counter;
     }
 }
-
+// Function to delete selected tasks
 function deleteSelectedTasks() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const tasksToDelete = [];
@@ -63,7 +63,7 @@ function deleteSelectedTasks() {
                 if (checkbox.checked) {
                     const listItem = checkbox.parentElement;
                     setTimeout(() => {
-                        taskList.removeChild(listItem);
+                        taskList.removeChild(listItem); // remove elements to the task list
                         counter--;
                         taskCount.textContent = counter;
                     }, 500); // Delay the removal to match the animation duration (0.5s)
@@ -76,9 +76,10 @@ function deleteSelectedTasks() {
 }
 
 
-
+// Function to toggle task completion
 function toggleTask(event) {
     const listItem = event.target.parentElement;
+    // 
     if (event.target.checked) {
         listItem.classList.add('completed');
     } else {
@@ -86,7 +87,7 @@ function toggleTask(event) {
     }
 }
 
-
+// Function to delete a single task
 function deleteTask(event) {
     const listItem = event.target.parentElement;
     const taskText = listItem.querySelector('span').textContent;
@@ -102,13 +103,14 @@ function deleteTask(event) {
     }
 }
 
+// Function to update task visibility based on the selected filter
 function updateTaskVisibility(filter) {
-
+// Remove the 'selected' class from all filter options
     allFilter.classList.remove('selected');
     completedFilter.classList.remove('selected');
     uncompletedFilter.classList.remove('selected');
 
-
+// Add the 'selected' class to the active filter
     switch (filter) {
         case 'completed':
             completedFilter.classList.add('selected');
@@ -119,7 +121,7 @@ function updateTaskVisibility(filter) {
         default:
             allFilter.classList.add('selected');
     }
-
+// Iterate through task items and show/hide based on the filter
     const taskItems = document.querySelectorAll('#taskList li');
 
     taskItems.forEach(taskItem => {
@@ -143,7 +145,7 @@ function updateTaskVisibility(filter) {
         }
     });
 }
-
+// Event listeners
 taskForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -155,9 +157,12 @@ allFilter.addEventListener('click', () => updateTaskVisibility('all'));
 completedFilter.addEventListener('click', () => updateTaskVisibility('completed'));
 uncompletedFilter.addEventListener('click', () => updateTaskVisibility('uncompleted'));
 
+// Initialize task visibility
 updateTaskVisibility('all');
 
-
+// Event listener for deleting selected tasks
 const deleteSelectedButton = document.getElementById('deleteSelected');
 deleteSelectedButton.addEventListener('click', deleteSelectedTasks);
+
+// Event listener for adding tasks
 addTaskButton.addEventListener('click', addTask);
