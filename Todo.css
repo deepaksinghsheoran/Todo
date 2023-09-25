@@ -1,3 +1,4 @@
+/* Styles for the "DS" box on the right side */
 .ds-box {
             float: right;
             background-color: #f0f0f0;
@@ -5,6 +6,7 @@
             border: 1px solid #ccc;
         }
 
+/* Styles for the main todo container */
 .todo-container {
     width: 40%;
     margin: 0 auto;
@@ -17,19 +19,21 @@
     align-items: center;
 }
 
+/* Styles for the input container */
 .input-container {
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
-
+/* Styles for the input bar containing the text input and add button */
 .input-bar {
     flex-grow: 1;
     display: flex;
     align-items: center;
 }
 
+/* Styles for the text input */
 input[type="text"] {
     width: 80%;
     flex-grow: 1;
@@ -42,16 +46,19 @@ input[type="text"] {
     outline: none;
 }
 
+/* Styles for the add task button */
 button#addTask {
     padding: 15px 20px;
 }
 
+/* Styles for task controls */
 .task-controls {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
 }
 
+/* Styles for task filters */
 .task-filters {
     display: flex;
     justify-content: space-between;
@@ -60,6 +67,7 @@ button#addTask {
     margin-top: 10px;
 }
 
+/* Styles for the task filters' div container */
 .task-filters div {
     display: flex;
     justify-content: flex-end;
@@ -67,59 +75,68 @@ button#addTask {
     flex-grow: 1;
 }
 
+/* Styles for task filter paragraph elements */
 .task-filters p {
     margin-right: 10px;
     cursor: pointer;
 }
+
+/* Styles for the task count span element */
 .task-filters span {
     margin-right: auto;
 }
 
+/* Styles for selected task filters */
 .selected {
     font-weight: bold;
 }
 
+/* Styles for unselected task filters */
 .task-filters p:not(.selected) {
     font-weight: normal;
     color: #777;
     cursor: pointer;
 }
 
+/* Horizontal line separator */
 hr {
     width: 100%;
     margin-top: 20px;
     border: 1px solid #ccc;
 }
 
+/* Styles for the task list (unordered list) */
 ul {
     list-style: none;
     padding: 0;
 }
 
+/* Styles for list items (individual tasks) */
 li {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
 }
 
+/* Styles for completed tasks with a line-through */
 .completed {
     text-decoration: line-through;
 }
 
-
+/* Styles for task container (individual task item) */
 .task-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-
+/* Styles for task text within a task container */
 .task-container span {
     flex-grow: 1;
     margin-right: 10px;
 }
 
-
+/* Styles for delete button within a task container */
 .task-container button {
     padding: 5px 10px;
     background-color: #007bff;
@@ -129,7 +146,7 @@ li {
     cursor: pointer;
 }
 
-
+/* Styles for task checkboxes */
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -138,6 +155,7 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+/* Styles for the custom checkbox design */
 input[type="checkbox"]::before {
     content: "";
     display: block;
@@ -148,10 +166,12 @@ input[type="checkbox"]::before {
     margin: 15% auto;
 }
 
+/* Styles for the custom checkbox design when checked */
 input[type="checkbox"]:checked::before {
     background-color: #007bff;
 }
 
+/* Keyframes for the fade-in animation */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -163,6 +183,7 @@ input[type="checkbox"]:checked::before {
     }
 }
 
+/* Keyframes for the fade-out animation */
 /* Add animation for deleting tasks */
 @keyframes fadeOut {
     0% {
