@@ -1,11 +1,11 @@
-const taskInput = document.getElementById('taskInput'); // For taking tasks
-const addTaskButton = document.getElementById('addTask');
-const taskList = document.getElementById('taskList');
-const taskCount = document.getElementById('taskCount');
-const taskForm = document.getElementById('taskForm');
-const allFilter = document.getElementById('allFilter');
-const completedFilter = document.getElementById('completedFilter');
-const uncompletedFilter = document.getElementById('uncompletedFilter');
+const taskInput = document.getElementById('taskInput'); // Input field for adding tasks
+const addTaskButton = document.getElementById('addTask');// Button to add tasks
+const taskList = document.getElementById('taskList');// Unordered list to display tasks
+const taskCount = document.getElementById('taskCount'); // Display the count of tasks
+const taskForm = document.getElementById('taskForm'); // Form for adding tasks
+const allFilter = document.getElementById('allFilter'); // Filter option: Show all tasks
+const completedFilter = document.getElementById('completedFilter'); // Filter option: Show completed tasks
+const uncompletedFilter = document.getElementById('uncompletedFilter'); // Filter option: Show uncompleted tasks
 
 // Initialize task counter
 let counter = 0;
@@ -18,30 +18,30 @@ function addTask() {
 
         const listItem = document.createElement('li'); // Create task elements
         listItem.classList.add('task-container', 'fade-in');
-        const checkbox = document.createElement('input');
+        const checkbox = document.createElement('input');// Create a checkbox for task completion
         checkbox.type = 'checkbox';
-        const taskTextElement = document.createElement('span');
+        const taskTextElement = document.createElement('span');// Create a span to display task text
         taskTextElement.textContent = taskText;
-        const deleteButton = document.createElement('button');
+        const deleteButton = document.createElement('button'); // Create a button to delete a task
         deleteButton.textContent = 'Delete';
 
-// Attach event listeners
+// Attach event listeners to the checkbox and delete button
         checkbox.addEventListener('change', toggleTask);
         deleteButton.addEventListener('click', deleteTask);
 
-// Add elements to the task list
+// Add the created elements to the task list
         listItem.appendChild(checkbox);
         listItem.appendChild(taskTextElement);
         listItem.appendChild(deleteButton);
 
-        taskList.appendChild(listItem);
+        taskList.appendChild(listItem); // Add the task item to the list
 
 // Clear the input field
         taskInput.value = '';
 
 // Update the task counter
-        counter++;
-        taskCount.textContent = counter;
+        counter++; // Increment the task counter
+        taskCount.textContent = counter; // Update the displayed task count
     }
 }
 // Function to delete selected tasks
@@ -63,9 +63,9 @@ function deleteSelectedTasks() {
                 if (checkbox.checked) {
                     const listItem = checkbox.parentElement;
                     setTimeout(() => {
-                        taskList.removeChild(listItem); // remove elements to the task list
-                        counter--;
-                        taskCount.textContent = counter;
+                        taskList.removeChild(listItem);  // Remove the selected task
+                        counter--; // Decrement the task counter
+                        taskCount.textContent = counter; // Update the displayed task count
                     }, 500); // Delay the removal to match the animation duration (0.5s)
                 }
             });
@@ -81,9 +81,9 @@ function toggleTask(event) {
     const listItem = event.target.parentElement;
     // 
     if (event.target.checked) {
-        listItem.classList.add('completed');
+        listItem.classList.add('completed'); // Apply completed styling
     } else {
-        listItem.classList.remove('completed');
+        listItem.classList.remove('completed'); // Remove completed styling
     }
 }
 
@@ -97,7 +97,7 @@ function deleteTask(event) {
         listItem.classList.add('fade-out');
         setTimeout(() => {
             taskList.removeChild(listItem);
-            counter--;
+            counter--; // Decrement the task counter
             taskCount.textContent = counter;
         }, 500); // Delay animation duration (0.5s)
     }
